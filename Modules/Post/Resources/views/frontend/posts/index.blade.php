@@ -15,7 +15,7 @@
     </x-frontend.header-block>
 
     <section class="bg-white p-6 text-gray-600 dark:bg-gray-700 sm:p-20">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
             @foreach ($$module_name as $$module_name_singular)
                 @php
                     $details_url = route("frontend.$module_name.show", [

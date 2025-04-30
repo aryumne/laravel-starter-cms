@@ -9,7 +9,7 @@
         <div class="overflow-hidden rounded-t-lg">
             <a href="{{ $url }}">
                 <img
-                    class="transform rounded-t-lg duration-300 hover:scale-110"
+                    class="w-full transform rounded-t-lg duration-300 hover:scale-110"
                     src="{{ $image }}"
                     alt="{{ $name }}"
                 />

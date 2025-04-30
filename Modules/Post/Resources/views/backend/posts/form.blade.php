@@ -104,10 +104,11 @@
     <div class="col-12 col-sm-4 mb-3">
         <div class="form-group">
             <?php
+            $categories = \Modules\Category\Models\Category::all()->pluck("name", "id")->all();
             $field_name = "category_id";
             $field_lable = __("post::$module_name.$field_name");
-            $field_options = ! empty($data) ? optional($data->category())->pluck("name", "id") : "";
-            $selected = ! empty($data)
+            $field_options = !empty($categories) ? $categories : [];
+            $selected = !empty($data)
                 ? optional($data->category())
                     ->pluck("id")
                     ->toArray()
@@ -118,7 +119,7 @@
 
             {{ html()->label($field_lable, $field_name)->class("form-label")->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_placeholder)->class("form-select select2-category")->attributes(["$required"]) }}
+            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_placeholder)->class("form-select select2")->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-4 mb-3">
@@ -160,8 +161,9 @@
         <div class="form-group">
             <?php
             $field_name = "tags_list[]";
+            $tags = \Modules\Tag\Models\Tag::all()->pluck("name", "id")->all();
             $field_lable = __("post::$module_name.tags");
-            $field_options = ! empty($data) ? optional($data->tags)->pluck("name", "id") : "";
+            $field_options = !empty($tags) ? $tags : [];
             $selected = ! empty($data)
                 ? optional($data->tags)
                     ->pluck("id")
@@ -173,7 +175,7 @@
 
             {{ html()->label($field_lable, $field_name)->class("form-label")->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->multiselect($field_name, $field_options, $selected)->class("form-control select2-tags")->attributes(["$required"]) }}
+            {{ html()->multiselect($field_name, $field_options, $selected)->class("form-control select2")->attributes(["$required"]) }}
         </div>
     </div>
 </div>
